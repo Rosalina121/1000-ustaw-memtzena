@@ -1,0 +1,62 @@
+
+:root {
+    --tbMargins: 2%;
+    --bgColor: #dde1e7
+}
+
+body {
+    background: var(--bgColor);
+}
+
+html,
+body,
+.blahaj {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.blahaj {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: var(--tbMargins);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: var(--tbMargins);
+}
+
+.ustawa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.45), 5px 5px 9px rgba(94, 104, 121, 0.3);
+    padding: 1%;
+}
+
+.title, .text, .element {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
