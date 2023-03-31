@@ -1,11 +1,14 @@
 
 :root {
     --tbMargins: 2%;
-    --bgColor: #dde1e7
+    --bgColor: #dde1e7;
+    --bgColor2: #ffffff;
+    --shadowLight: #ffffff;
+    --shadowDark: #000000;
 }
 
 body {
-    background: var(--bgColor);
+    background: linear-gradient(34deg, var(--bgColor) 0%, var(--bgColor2) 100%);
 }
 
 html,
@@ -49,14 +52,27 @@ body,
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: relative;
     border-radius: 20px;
     width: 100%;
     height: 100%;
-    box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.45), 5px 5px 9px rgba(94, 104, 121, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: -5px -5px 13px var(--shadowLight), 5px 5px 13px var(--shadowDark);
     padding: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+
 }
 
-.title, .text, .element {
+.title, .text, .element, .special {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.special {
+    font-size: larger;
+    font-weight: bold;
+}
+h1 {
+    margin-top: 0;
 }
