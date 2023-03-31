@@ -23,6 +23,7 @@ body,
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
 }
 
 .header {
@@ -66,13 +67,19 @@ body,
 }
 
 .title, .text, .element, .special {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Sans MS", "Comic Sans","Chalkboard", "ChalkboardSE-Regular", sans-serif;
 }
 
 .special {
     font-size: larger;
     font-weight: bold;
 }
+
+.text {
+    font-size: large;
+}
+
 h1 {
     margin-top: 0;
+    margin-bottom: 0;
 }

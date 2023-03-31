@@ -37,7 +37,8 @@ r.style.setProperty("--bgColor2", bgColor2);
 r.style.setProperty("--shadowLight", shadowLight);
 r.style.setProperty("--shadowDark", shadowDark);
 
-fetch("http://localhost:3000/ustawa/" + getUstawaId())
+
+fetch("http://localhost:3000/ustawa")
     .then((response) => {
         return response.json();
     })
@@ -48,5 +49,5 @@ fetch("http://localhost:3000/ustawa/" + getUstawaId())
     })
     .catch((error) => {
         title.innerHTML = "<h1>Ustawa #404: Ustaw nie znaleziono</h1>";
-        description.innerHTML = "Wygasł hosting czy co?\n<span style=\"font-family: Consolas;\">" + error + "<span>";
+        description.innerHTML = "Wygasł hosting czy co?\n<span style=\"font-family: Consolas, Menlo;\">" + error + "<span>";
     });
