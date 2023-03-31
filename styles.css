@@ -8,7 +8,7 @@
 }
 
 body {
-    background: linear-gradient(34deg, var(--bgColor) 0%, var(--bgColor2) 100%);
+    background: linear-gradient(45deg, var(--bgColor) 0%, var(--bgColor2) 100%);
 }
 
 html,
@@ -36,10 +36,13 @@ body,
 
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-left: 10%;
     margin-right: 10%;
-
+    gap: 20%;
+    align-content: space-around;
 }
 
 .footer {
@@ -56,7 +59,7 @@ body,
     justify-content: center;
     position: relative;
     border-radius: 20px;
-    width: 100%;
+    width: 70%;
     height: 100%;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: -5px -5px 13px var(--shadowLight), 5px 5px 13px var(--shadowDark);
@@ -66,7 +69,7 @@ body,
 
 }
 
-.title, .text, .element, .special {
+.title, .text, .element, .special, .button {
     font-family: "Comic Sans MS", "Comic Sans","Chalkboard", "ChalkboardSE-Regular", sans-serif;
 }
 
@@ -82,4 +85,36 @@ body,
 h1 {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+button.round {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+    border-style: none;
+    box-shadow: -2px -2px 13px var(--shadowLight), 2px 2px 13px var(--shadowDark);
+    font-size: large;
+    padding: 100%;
+    transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear; /* Firefox */
+    -webkit-transition: background 0.5s linear; /*safari and chrome */
+}
+
+button.round:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transition: background .3s linear;
+    -moz-transition: background .3s linear; /* Firefox */
+    -webkit-transition: background .3s linear; /*safari and chrome */
+
+} 
+button.round:active {
+    background: rgb(255, 255, 255);
+    transition: background .3s linear;
+    -moz-transition: background .3s linear; /* Firefox */
+    -webkit-transition: background .3s linear; /*safari and chrome */
+    box-shadow: -0px -0px 5px var(--shadowLight), 0px 0px 5px var(--shadowDark);
+} 
+
+.fa-solid.fa-arrows-rotate {
+    width: 20px;
+    height: 20px;
 }

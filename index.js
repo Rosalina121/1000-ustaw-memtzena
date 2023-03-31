@@ -1,8 +1,8 @@
 function getColorValues() {
     return {
         h: 360 * Math.random(),
-        s: 25 + 70 * Math.random(),
-        l: 65 + 10 * Math.random()
+        s: 15 + 45 * Math.random(),
+        l: 55 + 10 * Math.random()
     }
 }
 
@@ -15,7 +15,7 @@ function getHSLAElement(hsl, a) {
 }
 
 const baseColor = getColorValues()
-const suppColor = {h: baseColor.h, s: baseColor.s, l: baseColor.l + 7}
+const suppColor = {h: baseColor.h, s: baseColor.s + 10, l: baseColor.l + 25}
 const shadowLColor = {h: baseColor.h, s: baseColor.s, l: baseColor.l + 10}
 const shadowDColor = {h: baseColor.h, s: baseColor.s, l: baseColor.l - 70}
 
@@ -37,13 +37,12 @@ r.style.setProperty("--bgColor2", bgColor2);
 r.style.setProperty("--shadowLight", shadowLight);
 r.style.setProperty("--shadowDark", shadowDark);
 
-
-fetch("http://localhost:3000/ustawa")
+function refreshUstawa() {
+    fetch("http://local.palitechnika.com:3000/ustawa")
     .then((response) => {
         return response.json();
     })
     .then((ustawa) => {
-        console.log(ustawa)
         title.innerHTML = `<h1>Ustawa #${ustawa.number}: ${ustawa.title}</h1>`;
         description.innerHTML = ustawa.description;
     })
@@ -51,3 +50,7 @@ fetch("http://localhost:3000/ustawa")
         title.innerHTML = "<h1>Ustawa #404: Ustaw nie znaleziono</h1>";
         description.innerHTML = "Wygasł hosting czy co?\n<span style=\"font-family: Consolas, Menlo;\">" + error + "<span>";
     });
+}
+
+refreshUstawa()
+
