@@ -118,3 +118,11 @@ button.round:active {
     width: 20px;
     height: 20px;
 }
+
+.element.end {
+    text-align: end;
+}
+
+.element.start {
+    text-align: start;
+}
