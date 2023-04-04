@@ -31,6 +31,11 @@ function setColors() {
     r.style.setProperty("--bgColor2", bgColor2);
     r.style.setProperty("--shadowLight", shadowLight);
     r.style.setProperty("--shadowDark", shadowDark);
+
+    DarkReader.auto({
+        brightness: 100,
+        contrast: 105
+    });
 }
 
 function getUstawaId() {
@@ -48,6 +53,7 @@ function refreshUstawa() {
     .then((ustawa) => {
         title.innerHTML = `<h1>Ustawa #${ustawa.number}: ${ustawa.title}</h1>`;
         description.innerHTML = ustawa.description;
+        setColors()
     })
     .catch((error) => {
         title.innerHTML = "<h1>Ustawa #404: Ustaw nie znaleziono</h1>";
