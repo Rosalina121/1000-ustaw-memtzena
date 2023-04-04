@@ -1,3 +1,16 @@
+function setDarkMode() {
+    DarkReader.auto({
+        brightness: 100,
+        contrast: 105
+    });
+}
+
+function setIcon() {
+    const icon = document.querySelector("#toggle");
+    const drEnabled = DarkReader.isEnabled()
+    icon.className = `${drEnabled ? "fa-regular" : "fa-solid"} fa-lightbulb`
+}
+
 function getColorValues() {
     return {
         h: 360 * Math.random(),
@@ -32,10 +45,7 @@ function setColors() {
     r.style.setProperty("--shadowLight", shadowLight);
     r.style.setProperty("--shadowDark", shadowDark);
 
-    DarkReader.auto({
-        brightness: 100,
-        contrast: 105
-    });
+
 }
 
 function getUstawaId() {
@@ -61,6 +71,20 @@ function refreshUstawa() {
     });
 }
 
-setColors()
-refreshUstawa()
+function toggleDarkMode() {
 
+    if (!DarkReader.isEnabled()) {
+        DarkReader.enable({
+            brightness: 100,
+            contrast: 105
+        });
+    } else {
+        DarkReader.disable();
+    }
+    setIcon()
+}
+
+setColors()
+setDarkMode()
+refreshUstawa()
+setIcon()
