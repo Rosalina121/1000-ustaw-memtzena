@@ -16,33 +16,33 @@
         <title>1000 Ustaw Memtzena</title>
     </head>
     <body>
-        <div class="blahaj">
-            <div>
-                <div class="header">
-                    <div class="special">1000 Ustaw Memtzena</div>
-                    <div>
-                        <button class="round" onclick="toggleDarkMode();"><i id="toggle" class="fa-solid fa-lightbulb"></i></button>
-                    </div>
-                </div>
-                <div class="header">
-                    <div class="element start">Ciągle odkopujemy kolejne ustawy.</br>Nie sprawdzamy, czy są legitne, musicie się domyśleć sami</div>
-                    <div class="element end">Memtzenowi zapomniały się ustawy, więc przypominamy</div>
-                </div>
+        <div class="header">
+            <div class="header__text">
+                Memcen zgubił, to my szukamy. Nie odpowiadamy za prawidłowość znalezionych ustaw.
             </div>
-            <div class="main">
-                <div class="ustawa">
-                    <div class="title"></div>
-                    <div class="text"></div>
+          </div>
+        <div class="ustawa">
+            <div class="ustawa__wrp swiper-wrapper">
+              <div class="ustawa__item swiper-slide">
+                <div class="ustawa__num">
+                  <div class="text">
+                  #450
+                  </div>
                 </div>
-                <div>
-                    <button class="round" onclick="refreshUstawa();"><i class="fa-solid fa-arrows-rotate"></i></button>
+                <div class="ustawa__content">
+          <!--         <span class="ustawa__code">26 December 2019</span> -->
+                  <div class="ustawa__title">Ustawa o zakazie walenia konia w nocy z 20 na 30 bo tak kurwa se ktoś zazyczył</div>
+                  <div class="ustawa__text">No bo tak nie wolno, no nie?</div>
+                  <a onclick="refreshUstawa()" class="ustawa__button">Kolejna</a>
                 </div>
+              </div>
             </div>
-            <div class="footer">
-                <div class="element start">Strona nie jest w żaden sposób powiązana z klubem</br>parlamentarnym Konfederacja ani żadnymi jego politykami</div>
-                <div class="element end">Made with StackOverflow with 💔 by <a href="http://github.com/Rosalina121">Alina Rosa</a></div>
+          </div>
+          <div class="footer">
+            <div class="footer__text">
+                Created with <i class="fa-solid fa-heart-crack"></i> and <i class="fa-brands fa-stack-overflow"></i> by <a href="https://github.com/Rosalina121">Rosalina</a>
             </div>
-        </div>
+          </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js"></script>
     <script src="https://kit.fontawesome.com/95b8fda62c.js" crossorigin="anonymous"></script>

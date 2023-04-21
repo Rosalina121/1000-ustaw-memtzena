@@ -1,90 +1,56 @@
-function setDarkMode() {
-    DarkReader.auto({
-        brightness: 100,
-        contrast: 105
-    });
-}
-
-function setIcon() {
-    const icon = document.querySelector("#toggle");
-    const drEnabled = DarkReader.isEnabled()
-    icon.className = `${drEnabled ? "fa-regular" : "fa-solid"} fa-lightbulb`
-}
-
-function getColorValues() {
-    return {
-        h: 360 * Math.random(),
-        s: 15 + 45 * Math.random(),
-        l: 55 + 10 * Math.random()
-    }
-}
-
-function getHSLElement(hsl) {
-    return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`
-}
-
-function getHSLAElement(hsl, a) {
-    return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%, ${a})`
-}
-
-function setColors() {
-    const baseColor = getColorValues()
-    const suppColor = {h: baseColor.h, s: baseColor.s + 10, l: baseColor.l + 25}
-    const shadowLColor = {h: baseColor.h, s: baseColor.s, l: baseColor.l + 10}
-    const shadowDColor = {h: baseColor.h, s: baseColor.s, l: baseColor.l - 70}
-    
-    const bgColor = getHSLElement(baseColor)
-    const bgColor2 = getHSLElement(suppColor)
-    const shadowLight = getHSLAElement(shadowLColor, 0.45)
-    const shadowDark = getHSLAElement(shadowDColor, 0.3);
-
-    const r = document.querySelector(":root");
-
-    r.style.setProperty("--bgColor", bgColor);
-    r.style.setProperty("--bgColor2", bgColor2);
-    r.style.setProperty("--shadowLight", shadowLight);
-    r.style.setProperty("--shadowDark", shadowDark);
-
-
-}
-
-function getUstawaId() {
-    return Math.floor(Math.random() * 26).toString();
-}
-
 function refreshUstawa() {
-    const title = document.querySelector(".title");
-    const description = document.querySelector(".text");
+    const number = document.querySelector(".text");
+    const title = document.querySelector(".ustawa__title");
+    const description = document.querySelector(".ustawa__text");
 
     fetch("http://local.palitechnika.com:3000/ustawa")
-    .then((response) => {
-        return response.json();
-    })
-    .then((ustawa) => {
-        title.innerHTML = `<h1>Ustawa #${ustawa.number}: ${ustawa.title}</h1>`;
-        description.innerHTML = ustawa.description;
-        setColors()
-    })
-    .catch((error) => {
-        title.innerHTML = "<h1>Ustawa #404: Ustaw nie znaleziono</h1>";
-        description.innerHTML = "Wygasł hosting czy co?\n<span style=\"font-family: Consolas, Menlo;\">" + error + "<span>";
-    });
-}
-
-function toggleDarkMode() {
-
-    if (!DarkReader.isEnabled()) {
-        DarkReader.enable({
-            brightness: 100,
-            contrast: 105
+        .then((response) => {
+            return response.json();
+        })
+        .then((ustawa) => {
+            scrambleNumber(number, ustawa.number)
+            console.log(ustawa.number)
+            title.innerHTML = `${ustawa.title}`;
+            description.innerHTML = ustawa.description;
+        })
+        .catch((error) => {
+            title.innerHTML = "Ustawa #404: Ustaw nie znaleziono";
+            description.innerHTML =
+                'Wygasł hosting czy co?\n<span style="font-family: Consolas, Menlo;">' +
+                error +
+                "<span>";
         });
-    } else {
-        DarkReader.disable();
-    }
-    setIcon()
 }
 
-setColors()
-setDarkMode()
-refreshUstawa()
-setIcon()
+refreshUstawa();
+function randomIntFromInterval(min, max) {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function createInterval(htmlElement, interval) {
+    return setInterval(() => {
+        htmlElement.innerHTML = `#${randomIntFromInterval(0, 999)}`;
+    }, interval);
+}
+
+function clearTicker(interval, delay) {
+    setTimeout(() => {
+        clearInterval(interval);
+    }, delay);
+}
+
+function scrambleNumber(htmlElement, finalNumber) {
+    
+    clearTicker(createInterval(htmlElement, 10), 500)
+    clearTicker(createInterval(htmlElement, 20), 800)
+    clearTicker(createInterval(htmlElement, 40), 1200)
+    clearTicker(createInterval(htmlElement, 80), 1800)
+    clearTicker(createInterval(htmlElement, 100), 2400)
+
+
+
+    setTimeout(() => {
+        htmlElement.innerHTML = `#${finalNumber}`;
+    }, 2800);
+}
