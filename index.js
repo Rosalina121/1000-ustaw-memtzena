@@ -9,9 +9,14 @@ function refreshUstawa() {
         })
         .then((ustawa) => {
             scrambleNumber(number, ustawa.number)
+            if (ustawa.number === "665") {
+                ustawaLokalizacyjna(description);
+            } else {
+                description.innerHTML = ustawa.description;
+            }
             console.log(ustawa.number)
             title.innerHTML = `${ustawa.title}`;
-            description.innerHTML = ustawa.description;
+            console.log(ustawa.title)
         })
         .catch((error) => {
             title.innerHTML = "Ustawa #404: Ustaw nie znaleziono";
@@ -53,4 +58,16 @@ function scrambleNumber(htmlElement, finalNumber) {
     setTimeout(() => {
         htmlElement.innerHTML = `#${finalNumber}`;
     }, 2800);
+}
+
+function ustawaLokalizacyjna(description) {
+    fetch("https://api.db-ip.com/v2/free/self")
+    .then((response) => {
+        return response.json();
+    })
+    .then((ip) => {
+        console.log(ip)
+        description.innerHTML = `<tt>${ip.ipAddress}<br>${ip.continentName}<br>${ip.countryName}<br>${ip.city}</tt>`
+    })
+
 }
