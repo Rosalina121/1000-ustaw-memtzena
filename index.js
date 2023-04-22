@@ -14,9 +14,7 @@ function refreshUstawa() {
             } else {
                 description.innerHTML = ustawa.description;
             }
-            console.log(ustawa.number)
             title.innerHTML = `${ustawa.title}`;
-            console.log(ustawa.title)
         })
         .catch((error) => {
             title.innerHTML = "Ustawa #404: Ustaw nie znaleziono";
@@ -46,14 +44,11 @@ function clearTicker(interval, delay) {
 }
 
 function scrambleNumber(htmlElement, finalNumber) {
-    
     clearTicker(createInterval(htmlElement, 10), 500)
     clearTicker(createInterval(htmlElement, 20), 800)
     clearTicker(createInterval(htmlElement, 40), 1200)
     clearTicker(createInterval(htmlElement, 80), 1800)
     clearTicker(createInterval(htmlElement, 100), 2400)
-
-
 
     setTimeout(() => {
         htmlElement.innerHTML = `#${finalNumber}`;
@@ -66,7 +61,6 @@ function ustawaLokalizacyjna(description) {
         return response.json();
     })
     .then((ip) => {
-        console.log(ip)
         description.innerHTML = `<tt>${ip.ipAddress}<br>${ip.continentName}<br>${ip.countryName}<br>${ip.city}</tt>`
     })
 
